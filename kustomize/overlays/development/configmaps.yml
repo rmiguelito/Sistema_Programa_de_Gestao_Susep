@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: web-api-env
+  labels:
+    app: web-api
+data:
+  ASPNETCORE_ENVIRONMENT: Homolog
+  emailOptions__EmailRemetente: no-reply@me.gov.br
+  emailOptions__NomeRemetente: 'Programa de Gestão - ME'
+  emailOptions__SmtpServer: smtp.me.gov.br
+  emailOptions__Port: '25'
+  ldapOptions__Configurations__0__Url: url
+  ldapOptions__Configurations__0__Port: '389'
+  ldapOptions__Configurations__0__BindDN: 'CN=Fulano de tal,CN=Users,DC=orgao'
+  ldapOptions__Configurations__0__SearchBaseDC: CN=Users,DC=orgao
+  ldapOptions__Configurations__0__SearchFilter: '(&(objectClass=user)(objectClass=person)(sAMAccountName={0}))'
+  ldapOptions__Configurations__0__CpfAttributeFilter: filter
+  ldapOptions__Configurations__0__EmailAttributeFilter: filter
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-gateway-env
+  labels:
+    app: api-gateway
+data:
+  ASPNETCORE_ENVIRONMENT: Homolog
+...

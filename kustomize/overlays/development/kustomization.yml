@@ -1,0 +1,33 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: sisgp-dev
+images:
+- name: ghcr.io/srmourasilva/sistema_programa_de_gestao_susep/sgd
+  newTag: "latest"
+
+resources:
+- ../../base
+- configmaps.yml
+- secrets.yml
+- ingress.yml
+
+generatorOptions:
+  disableNameSuffixHash: true
+  labels:
+    app: sisgp
+
+configMapGenerator:
+- name: web-api-settings
+  files:
+  - web-api/appsettings-web-api.json
+  - web-api/connectionstrings-web-api.json
+- name: api-gateway-settings
+  files:
+  - api-gateway/appsettings-api-gateway.json
+  - api-gateway/ocelot.json
+- name: web-app-settings
+  files:
+  - web-app/env.js
+...

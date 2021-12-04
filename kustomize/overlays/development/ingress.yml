@@ -1,0 +1,37 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sisgp
+  labels:
+    app: sisgp
+spec:
+  tls:
+  - hosts:
+    - sisgp.dev.example.com
+  rules:
+  - host: sisgp.dev.example.com
+    http:
+      paths:
+      - path: /sisgp/app
+        pathType: Prefix
+        backend:
+          service:
+            name: web-app
+            port:
+              name: http
+      - path: /sisgp/gateway
+        pathType: Prefix
+        backend:
+          service:
+            name: api-gateway
+            port:
+              name: http
+      - path: /sisgp/api
+        pathType: Prefix
+        backend:
+          service:
+            name: web-api
+            port:
+              name: http
+...
