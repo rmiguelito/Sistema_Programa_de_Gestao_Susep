@@ -21,12 +21,12 @@ generatorOptions:
 configMapGenerator:
 - name: web-api-settings
   files:
-  - web-api/appsettings-web-api.json
-  - web-api/connectionstrings-web-api.json
+  - web-api/appsettings.Homolog.json
+  - web-api/connectionstrings.Homolog.json
 - name: api-gateway-settings
   files:
-  - api-gateway/appsettings-api-gateway.json
-  - api-gateway/ocelot.json
+  - api-gateway/appsettings.Homolog.json
+  - api-gateway/ocelot.Homolog.json
 - name: web-app-settings
   files:
   - web-app/env.js
